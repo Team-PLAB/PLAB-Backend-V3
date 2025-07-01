@@ -55,8 +55,6 @@ export class LabController {
   }
 
   @ApiOperation({ summary: '모든 대여 요청 조회' })
-  @UseGuards(AuthGuard)
-  @ApiBearerAuth()
   @Get('list')
   async findDeletionRental(): Promise<ApiResponseUtil> {
     const labs = await this.labService.findDeletionRental()
