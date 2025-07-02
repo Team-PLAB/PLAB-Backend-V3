@@ -45,9 +45,6 @@ export class LabController {
   }
 
   @ApiOperation({ summary: '승인한 대여 요청 조회' })
-  @Roles(RolesEnum.admin)
-  @UseGuards(AuthGuard, RolesGuard)
-  @ApiBearerAuth()
   @Get('approval')
   async findApproval(): Promise<ApiResponseUtil> {
     const labs = await this.labService.findApproval()
