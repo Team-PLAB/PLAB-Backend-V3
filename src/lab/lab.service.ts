@@ -66,7 +66,11 @@ export class LabService {
 
   // 모든 대여 요청 조회
   async findAll(): Promise<LabResponseDto[]> {
-    const labs = await this.labRepository.find()
+    const labs = await this.labRepository.find({
+      where: {
+        approvalRental: true
+      }
+    })
     return labs.map((lab) => LabResponseDto.fromEntity(lab))
   }
 
